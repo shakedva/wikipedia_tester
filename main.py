@@ -18,7 +18,7 @@ def search(query):
             return
         result = search_results_page.check_search_matches(li)
 
-        if result.lower() == query.lower():
+        if query.lower() in result.lower():
             print(f'Found {result}')
         else:
             print(
