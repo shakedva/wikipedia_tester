@@ -1,15 +1,11 @@
 import pytest
-from selenium import webdriver
-from scraper.home_page import search
-from scraper.search_results_page import find_first_result, check_search_matches
+from scraper import HomePage, SearchResultsPage, selenium_driver
 
 
 @pytest.fixture
 def driver():
-    driver = webdriver.Chrome()
-    driver.get('https://he.wikipedia.org/wiki/')
-    yield driver
-    driver.quit()
+    with selenium_driver() as driver:
+        yield driver
 
 # def test_search(driver):
 #     text = "clark virgil terry"
